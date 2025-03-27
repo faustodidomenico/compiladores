@@ -1,0 +1,60 @@
+# Ejercicio 1:
+
+let suma : (Nat -> Nat -> Nat) = fix(suma : Nat -> Nat -> Nat)
+    (m : Nat) -> fun(n: Nat) ->
+        ifz n
+            then m
+            else succ(suma m (pred n))
+
+let resta : (Nat -> Nat -> Nat) = fix(resta: Nat -> Nat -> Nat)
+    (m : Nat) -> fun(n: Nat) ->
+        ifz n
+            then m
+            else pred (resta m (pred n))
+
+let mult : (Nat -> Nat -> Nat) = fix(mult: Nat -> Nat -> Nat)
+    (m : Nat) -> fun(n: Nat) ->
+        ifz m then 0
+            else ifz n then 0
+                else ifz (pred n) then m else suma m (mult m (pred n))
+
+let exp : (Nat -> Nat -> Nat) = fix(exp: Nat -> Nat -> Nat)
+    (m: Nat) -> fun(n: Nat) ->
+        ifz n
+            then 1
+            else ifz (pred n)
+                    then m
+                    else mult m (exp m (pred n))
+
+let fact  : (Nat -> Nat)= fix(fact : Nat -> Nat)
+    (m: Nat) -> ifz m
+                    then 1
+                    else mult m (fact (pred m))
+
+## Ejercicio 2
+#let True = 0
+#let False = 1
+##let ifthenelse = fun(c: Nat) -> fun()
+#
+#let pair = fun(a: Nat) -> fun(b: Nat) -> fun(f : Nat -> Nat -> Nat) -> (f a) b
+#let fst = fun(a: Nat) -> fun(b: Nat) -> a
+#let snd = fun(a: Nat) -> fun(b: Nat) -> b 
+#
+##Ejercicio 3
+#
+#let gt = fun(m : Nat) -> fun(n: Nat) ->
+#    ifz (resta  m n )
+#        then (ifz (resta n m) then 0
+#                             else 1)
+#        else (ifz (resta n m) then 0
+#                            else 1)
+#
+#let gcd = fix(gcd: Nat -> Nat -> Nat) (m : Nat) ->
+#    fun(n: Nat) -> ifz n then m
+#                    else ifz m then n
+#                        else ifz (gt m n) then gcd (resta m n) n
+#                                else gcd m (resta n m)
+#
+#let rt = fix(rt: Nat -> Nat -> Nat -> Nat -> Nat) (z : Nat) ->
+#    fun(f: Nat -> Nat) -> fun(n: Nat) ->
+#        ifz n then z else rt (f (pred n)) n

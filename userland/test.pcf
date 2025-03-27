@@ -1,0 +1,18 @@
+let rec suma (m n:Nat) : Nat = ifz n then m else suma (succ m) (pred n)
+#let rec suma (m n:Nat) : Nat = ifz n then m else (succ (suma m (pred n)))
+let x:Nat = suma 2 6
+
+
+#type Mt = Nat
+#let fn (x:Nat) : Nat = succ x
+#let y:Nat = fn 1
+
+#let rec loop (x:Nat) :Nat = loop x
+#let x:Nat = loop 0
+
+#let f (x:Nat) : Nat = x
+#let g (x:Nat) : Nat = f x
+#let x:Nat = g 1 
+
+#let g (x:Nat) : Nat = ifz x then 0 else 1
+#let x:Nat = g 1

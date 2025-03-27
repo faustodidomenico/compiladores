@@ -1,0 +1,9 @@
+let b : Nat = 10
+
+let g (x : Nat) : Nat = x + 1 + b
+
+### ROMPE: 
+#let f (x y: Nat) : Nat = (g (x+1)) + y
+
+let f (x y: Nat) : Nat = (g x) + y
+let a:Nat = f 3 2

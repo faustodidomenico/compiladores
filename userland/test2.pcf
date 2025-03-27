@@ -1,0 +1,23 @@
+#let fn (x:Nat) : Nat = succ x
+#let y:Nat = fn 1
+
+#let g (x:Nat) : Nat = ifz x then 0 else 1
+#let x:Nat = g 1
+
+
+#let f (x y z:Nat ):Nat = x +y + z + 5
+let f (x:Nat):Nat = x + 5
+
+let resta1 (x:Nat):Nat = x - 1
+
+let rec countdown (n:Nat) : Nat =
+ ifz n then 0 else countdown (n-1)
+  
+#let res : Nat = sumaR 100 400
+
+#let res2 : Nat = sumaR 200 200
+
+
+#let a:Nat = f 2 7 12 # App (App (App f 2) 7) 12
+let a:Nat = countdown 10
+#let a:Nat = f 1

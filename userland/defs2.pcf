@@ -1,0 +1,4 @@
+type Mt = Nat
+let rec suma (m n:Mt) :Mt = ifz n then m else succ(suma m (pred n))
+let suma1 (m : Mt) : Mt = succ m
+let f (g : Nat -> Nat) : Nat = g 1

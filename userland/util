@@ -1,0 +1,20 @@
+-- Reglas de Búsqueda
+-- <pred t, p, k>              ==>   <t, p, pred [] > k>
+-- <succ t, p, k>              ==>   <t, p, succ [] > k>
+-- <ifz c then t else e, p ,k> ==>   <c, p, p.ifz [] then t else e > k>
+-- <t u, p, k>                 ==>   <t, p, p.[] u > k>
+-- <x, p, k>                   ==>   <<p(x) , k>>
+-- <n, p, k>                   ==>   <<n, k>>
+-- <fun x.t, p, k>             ==>   <<clos_fun(p,x,t), k >>
+-- <fix f x.t, p, k>           ==>   <<clos_fix(p,f,x,t), k>>
+
+
+-- Reglas de reducción.
+-- << 0, pred [] > k >>                  ==> << 0, k >>
+-- << np, pred [] > k >>                  ==> << n-1, k >>
+-- << n , succ [] > k >>                  ==> << n+1, k >>
+-- << 0 , p · ifz [] then t else e > k >> ==> < t , p , k >   
+-- << np, p · ifz [] then t else e > k >> ==> < e , p , k >
+-- << clos, p · [] t > k                  ==> < t, p , clos [] > k >
+-- << v , closFun (p,x,t) [] > k          ==> < t , p(x -> v), k >
+-- << v , closFix (p,f,x,t) [] > k        ==> < t , p(f -> closfix(p,f,x,t), x->v), k >

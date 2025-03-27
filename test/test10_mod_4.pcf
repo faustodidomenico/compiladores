@@ -1,0 +1,19 @@
+# listas con numeros del 1 al 9 (base-10)
+# Al ser una representación de solo dígitos es fácil ver la 
+# lista resultante en el numero final.
+
+let eq(x y : Nat) : Nat = 
+    ifz (x-y) + (y-x) then 0 else 1 
+
+let rec mod(z w:Nat) : Nat = 
+    ifz eq z w then 0 else ifz (z - w) then z else mod (z-w) w
+
+let mans:Nat = mod 5234 6
+
+# (mod 5234) 6
+# mod 5234
+
+
+
+#[Decl {declPos = (11,1), declName = "mans", declBody = App (11,16) (App (11,16) (V (11,20) (Free "mod")) (Const (11,25) (CNat 5234))) (Const (14,11) (CNat 6))},Decl {declPos = (8,1), declName = "mod", declBody = Fix (8,1) "mod" (FunTy NatTy (FunTy NatTy NatTy)) "x" NatTy (Lam (8,1) "y" NatTy (IfZ (9,5) (App (9,9) (App (9,9) (V (9,12) (Free "eq")) (V (9,14) (Bound 1))) (V (9,16) (Bound 0))) (Const (9,23) (CNat 0)) (IfZ (9,28) (BinaryOp  (Minus False) (V (9,35) (Bound 1)) (V (9,38) (Bound 0))) (V (9,47) (Bound 1)) (App (9,52) (App (9,52) (V (9,56) (Bound 2)) (BinaryOp  (Minus False) (V (9,58) (Bound 1)) (V (9,60) (Bound 0)))) (V (11,1) (Bound 0))))))},Decl {declPos = (5,1), declName = "eq", declBody = Lam (5,1) "x" NatTy (Lam (5,1) "y" NatTy (IfZ (6,5) (BinaryOp  (Plus False) (BinaryOp  (Minus False) (V (6,11) (Bound 1)) (V (6,13) (Bound 0))) (BinaryOp  (Minus False) (V (6,19) (Bound 0)) (V (6,21) (Bound 1)))) (Const (6,30) (CNat 0)) (Const (8,1) (CNat 1))))}]
+#[Decl {declPos = (11,1), declName = "mans", declBody = App (11,16) (App (11,16) (V (11,20) (Free "mod")) (Const (11,25) (CNat 5234))) (Const (14,11) (CNat 6))},Decl {declPos = (8,1), declName = "mod", declBody = Fix (8,1) "mod" (FunTy NatTy (FunTy NatTy NatTy)) "x" NatTy (Lam (8,1) "y" NatTy (IfZ (9,5) (App (9,9) (App (9,9) (V (9,12) (Free "eq")) (V (9,14) (Bound 1))) (V (9,16) (Bound 0))) (Const (9,23) (CNat 0)) (IfZ (9,28) (BinaryOp  (Minus False) (V (9,35) (Bound 1)) (V (9,38) (Bound 0))) (V (9,47) (Bound 1)) (App (9,52) (App (9,52) (V (9,56) (Bound 2)) (BinaryOp  (Minus False) (V (9,58) (Bound 1)) (V (9,60) (Bound 0)))) (V (11,1) (Bound 0))))))},Decl {declPos = (5,1), declName = "eq", declBody = Lam (5,1) "x" NatTy (Lam (5,1) "y" NatTy (IfZ (6,5) (BinaryOp  (Plus False) (BinaryOp  (Minus False) (V (6,11) (Free "x")) (V (6,13) (Free "y"))) (BinaryOp  (Minus False) (V (6,19) (Free "y")) (V (6,21) (Free "x")))) (Const (6,30) (CNat 0)) (Const (8,1) (CNat 1))))}]
